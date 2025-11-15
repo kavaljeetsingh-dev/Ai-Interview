@@ -1,0 +1,356 @@
+/* CodeEditorModal.css */
+
+.code-editor-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.code-editor-overlay.fullscreen {
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+.code-editor-modal {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 1200px;
+  height: 80%;
+  max-height: 800px;
+  overflow: hidden;
+  color: #cccccc;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+}
+
+.code-editor-modal.fullscreen-modal {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  border-radius: 0;
+}
+
+/* Header */
+.code-editor-header {
+  background-color: #2d2d30;
+  border-bottom: 1px solid #3e3e42;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 35px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.window-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.window-control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.window-control:hover {
+  opacity: 0.8;
+}
+
+.window-control.close {
+  background-color: #ff5f56;
+}
+
+.window-control.minimize {
+  background-color: #ffbd2e;
+}
+
+.window-control.maximize {
+  background-color: #27ca3f;
+}
+
+.editor-title {
+  color: #cccccc;
+  font-size: 13px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.header-right {
+  display: flex;
+  gap: 8px;
+}
+
+.action-button {
+  background-color: #0e639c;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: background-color 0.2s;
+}
+
+.action-button:hover {
+  background-color: #1177bb;
+}
+
+.run-button {
+  background-color: #16825d;
+}
+
+.run-button:hover {
+  background-color: #1e9e6b;
+}
+
+.save-button {
+  background-color: #0e639c;
+}
+
+.save-button:hover {
+  background-color: #1177bb;
+}
+
+.button-icon {
+  font-size: 10px;
+}
+
+/* Language Selector */
+.language-selector {
+  background-color: #252526;
+  border-bottom: 1px solid #3e3e42;
+}
+
+.language-tabs {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.language-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.language-tab {
+  background-color: transparent;
+  border: none;
+  color: #969696;
+  padding: 8px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  white-space: nowrap;
+  position: relative;
+}
+
+.language-tab:hover {
+  background-color: #2a2d2e;
+  color: #cccccc;
+}
+
+.language-tab.active {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border-bottom-color: var(--lang-color, #0e639c);
+}
+
+.language-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* Code Editor Container */
+.code-editor-container {
+  flex: 1;
+  display: flex;
+  background-color: #1e1e1e;
+  overflow: hidden;
+}
+
+.line-numbers {
+  background-color: #1e1e1e;
+  color: #858585;
+  padding: 16px 8px;
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: right;
+  border-right: 1px solid #3e3e42;
+  user-select: none;
+  min-width: 50px;
+  overflow: hidden;
+}
+
+.line-number {
+  height: 18.2px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.code-textarea {
+  flex: 1;
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  border: none;
+  outline: none;
+  padding: 16px;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 13px;
+  line-height: 1.4;
+  resize: none;
+  white-space: pre;
+  overflow-wrap: normal;
+  overflow-x: auto;
+  tab-size: 4;
+}
+
+.code-textarea::placeholder {
+  color: #6a6a6a;
+}
+
+.code-textarea::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.code-textarea::-webkit-scrollbar-track {
+  background-color: #1e1e1e;
+}
+
+.code-textarea::-webkit-scrollbar-thumb {
+  background-color: #424242;
+  border-radius: 6px;
+}
+
+.code-textarea::-webkit-scrollbar-thumb:hover {
+  background-color: #4f4f4f;
+}
+
+/* Footer */
+.code-editor-footer {
+  background-color: #007acc;
+  color: white;
+  padding: 4px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  min-height: 22px;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.encoding {
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .code-editor-modal {
+    width: 95%;
+    height: 90%;
+  }
+  
+  .language-tabs {
+    flex-wrap: wrap;
+  }
+  
+  .language-tab {
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+  
+  .header-right {
+    gap: 4px;
+  }
+  
+  .action-button {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+  
+  .footer-left {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+/* Dark theme scrollbar for Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #424242 #1e1e1e;
+}
+
+/* Animation for modal appearance */
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.code-editor-modal {
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+/* Syntax highlighting colors (basic) */
+.code-textarea {
+  /* These would be enhanced with a proper syntax highlighter */
+  color: #d4d4d4;
+}
+
+/* Focus styles */
+.code-textarea:focus {
+  outline: none;
+  box-shadow: inset 0 0 0 1px #007acc;
+}
