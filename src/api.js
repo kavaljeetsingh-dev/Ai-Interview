@@ -1,1 +1,1 @@
-export const LOCAL_URL = `http://localhost:5000`;
+export const LOCAL_URL = `https://ai-interview-backend-j2tv.onrender.com`;
